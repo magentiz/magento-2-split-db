@@ -112,6 +112,11 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
             return false;
         }
 
+        // Ignore use read connection for table quote
+        if (preg_match('/\bfrom\b.*?\bquote+([\w-]+)\b/i', $sql)) {
+            return false;
+        }
+
         return true;
     }
 
