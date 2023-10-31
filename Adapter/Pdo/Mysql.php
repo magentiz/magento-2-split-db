@@ -15,9 +15,30 @@ use Magento\Framework\App\State;
 
 class Mysql extends OriginalMysqlPdo implements AdapterInterface
 {
-    protected $readConnection;
+    /**
+     * @var CloneMysql
+     */
+    private $readConnection;
+    /**
+     * @var State
+     */
+    private $state;
+
+    /**
+     * @var Registry
+     */
     protected  $_registry;
 
+    /**
+     * @param State $state
+     * @param Registry $registry
+     * @param StringUtils $string
+     * @param DateTime $dateTime
+     * @param LoggerInterface $logger
+     * @param SelectFactory $selectFactory
+     * @param array $config
+     * @param SerializerInterface|null $serializer
+     */
     public function __construct(
         State $state,
         Registry $registry,
@@ -66,19 +87,25 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
     }
 
     /**
+     * @return bool
+     */
+    protected function isAdmin() {
+        try {
+            $areaCode = $this->state->getAreaCode();
+        } catch (\Exception $e) {
+            $areaCode = null;
+        }
+        return ($areaCode == \Magento\Framework\App\Area::AREA_ADMINHTML);
+    }
+
+    /**
      * Check if query is readonly
      */
     protected function canUseReader($sql)
     {
-
-        try {
-            if($this->state->getAreaCode() == 'adminhtml'){
-               return false;
-            }
-        }catch (\Exception $e){
+        if ($this->isAdmin()) {
             return false;
         }
-
         if($this->_registry->registry('useWriter')){
             return false;
         }
@@ -97,7 +124,8 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
             'DROP ',
             'CREATE ',
             'search_tmp',
-            'GET_LOCK'
+            'GET_LOCK',
+            'TRUNCATE'
         ];
         foreach($writerSqlIdentifiers as $writerSqlIdentifier){
             if(stripos(substr($sql, 0 , 20), $writerSqlIdentifier) !== false){
@@ -116,7 +144,6 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
         if (preg_match('/\bfrom\b.*?\bquote+([\w-]+)\b/i', $sql)) {
             return false;
         }
-
         return true;
     }
 
