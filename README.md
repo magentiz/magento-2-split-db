@@ -1,0 +1,2 @@
+# Magentiz SplitDb
+
