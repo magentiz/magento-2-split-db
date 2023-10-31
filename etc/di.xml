@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Framework\DB\Adapter\Pdo\Mysql" type="Magentiz\SplitDb\Adapter\Pdo\Mysql" />
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="db_mode" xsi:type="object">Magentiz\SplitDb\Console\Command\ChangeDbMode</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
