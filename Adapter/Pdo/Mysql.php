@@ -74,11 +74,7 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
                     'config' => $slaveConfig,
                     'serializer' => $serializer,
                 ]);
-            } else {
-                $this->readConnection = null;
             }
-        } else {
-            $this->readConnection = null;
         }
 
         parent::__construct(
@@ -94,7 +90,8 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
     /**
      * @return bool
      */
-    protected function isAdmin() {
+    protected function isAdmin()
+    {
         try {
             $areaCode = $this->state->getAreaCode();
         } catch (\Exception $e) {
@@ -105,6 +102,8 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
 
     /**
      * Check if query is readonly
+     * @param string $sql
+     * @return bool
      */
     protected function canUseReader($sql)
     {
@@ -133,7 +132,7 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
             'TRUNCATE'
         ];
         foreach ($writerSqlIdentifiers as $writerSqlIdentifier) {
-            if (stripos(substr($sql, 0 , 20), $writerSqlIdentifier) !== false) {
+            if (stripos(substr($sql, 0, 20), $writerSqlIdentifier) !== false) {
                 if ($writerSqlIdentifier != 'GET_LOCK') {
                     $this->_registry->register('useWriter', true);
                 }
@@ -141,7 +140,7 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
             }
         }
 
-        if (stripos(substr($sql, 0 , 120), 'FOR UPDATE') !== false) {
+        if (stripos(substr($sql, 0, 120), 'FOR UPDATE') !== false) {
             return false;
         }
 
