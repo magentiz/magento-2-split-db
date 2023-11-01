@@ -1,0 +1,31 @@
+{
+    "name": "magentiz/splitdb",
+    "description": "Magentiz_SplitDb Extension, splitdb for magento 2",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "authors": [
+        {
+          "name": "Open Techiz",
+          "email": "support@opentechiz.com",
+          "homepage": "https://www.opentechiz.com",
+          "role": "Technical Support"
+        }
+    ],
+    "minimum-stability": "dev",
+    "keywords": [
+      "magento 2",
+      "magento 2 splitdb",
+      "magento splitdb",
+      "splitdb",
+      "magentiz",
+      "magentiz_splitdb",
+      "opentechiz"
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Magentiz\\SplitDb\\": ""
+        }
+    }
+}
