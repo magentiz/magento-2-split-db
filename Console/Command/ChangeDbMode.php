@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright © Open Techiz All rights reserved.
+ * See COPYING.txt for license details.
+ */
 
 namespace Magentiz\SplitDb\Console\Command;
 
@@ -9,9 +13,20 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
 
+/**
+ * Command for change db mode
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ */
 class ChangeDbMode extends Command
 {
     const MODE = 'mode';
+
+    /** Command name */
+    const NAME = 'db:mode:set';
+
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $options = [
@@ -23,19 +38,20 @@ class ChangeDbMode extends Command
             )
         ];
 
-        $this->setName('db:mode:set')
-            ->setDescription('database mode set')
+        $this->setName(self::NAME)
+            ->setDescription('Database mode set.')
             ->setDefinition($options);;
 
         parent::configure();
     }
+
     /**
      * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         if ($mode = $input->getOption(self::MODE)) {
-            if($mode == 'default' || $mode == 'split'){
+            if ($mode == 'default' || $mode == 'split') {
                 $isActive = ($mode == 'split');
                 $write = ObjectManager::getInstance()->create(\Magento\Framework\App\DeploymentConfig\Writer::class);
                 $write->saveConfig([
@@ -50,10 +66,10 @@ class ChangeDbMode extends Command
                     ]
                 ]);
             } else {
-                $output->writeln("Mode allow is: default or split");
+                $output->writeln('Mode allow is: default or split');
             }
         } else {
-            $output->writeln("Please input mode: default or split");
+            $output->writeln('Please input mode: default or split');
         }
     }
 }

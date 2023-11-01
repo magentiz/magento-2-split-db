@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright © Open Techiz All rights reserved.
+ * See COPYING.txt for license details.
+ */
 
 namespace Magentiz\SplitDb\Adapter\Pdo;
 

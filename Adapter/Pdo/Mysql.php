@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright © Open Techiz All rights reserved.
+ * See COPYING.txt for license details.
+ */
 
 namespace Magentiz\SplitDb\Adapter\Pdo;
 
@@ -27,9 +31,10 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
     /**
      * @var Registry
      */
-    protected  $_registry;
+    protected $_registry;
 
     /**
+     * Mysql constructor.
      * @param State $state
      * @param Registry $registry
      * @param StringUtils $string
@@ -51,12 +56,12 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
     ) {
         $this->state = $state;
         $this->_registry = $registry;
-        if(isset($config['slaves']) && isset($config['is_split'])){
-            // keep the same slave throughout the request
+        if (isset($config['slaves']) && isset($config['is_split'])) {
+            // Keep the same slave throughout the request
             $slaveIndex = rand(0, (count($config['slaves']) - 1));
             $slaveConfig = $config['slaves'][$slaveIndex];
             unset($config['slaves']);
-            if($config['is_split']){
+            if ($config['is_split']) {
                 $slaveConfig = array_merge(
                     $config,
                     $slaveConfig
@@ -69,10 +74,10 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
                     'config' => $slaveConfig,
                     'serializer' => $serializer,
                 ]);
-            }else{
+            } else {
                 $this->readConnection = null;
             }
-        }else{
+        } else {
             $this->readConnection = null;
         }
 
@@ -106,14 +111,14 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
         if ($this->isAdmin()) {
             return false;
         }
-        if($this->_registry->registry('useWriter')){
+        if ($this->_registry->registry('useWriter')) {
             return false;
         }
-        if(!$this->readConnection){
+        if (!$this->readConnection) {
             return false;
         }
-        // for certain circumstances we want to for using the writer
-        if(php_sapi_name() == 'cli'){
+        // For certain circumstances we want to for using the writer
+        if (php_sapi_name() == 'cli') {
             return false;
         }
 
@@ -127,16 +132,16 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
             'GET_LOCK',
             'TRUNCATE'
         ];
-        foreach($writerSqlIdentifiers as $writerSqlIdentifier){
-            if(stripos(substr($sql, 0 , 20), $writerSqlIdentifier) !== false){
-                if($writerSqlIdentifier != 'GET_LOCK'){
+        foreach ($writerSqlIdentifiers as $writerSqlIdentifier) {
+            if (stripos(substr($sql, 0 , 20), $writerSqlIdentifier) !== false) {
+                if ($writerSqlIdentifier != 'GET_LOCK') {
                     $this->_registry->register('useWriter', true);
                 }
                 return false;
             }
         }
 
-        if(stripos(substr($sql, 0 , 120), 'FOR UPDATE') !== false){
+        if (stripos(substr($sql, 0 , 120), 'FOR UPDATE') !== false) {
             return false;
         }
 
@@ -147,17 +152,23 @@ class Mysql extends OriginalMysqlPdo implements AdapterInterface
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function multiQuery($sql, $bind = [])
     {
-        if($this->canUseReader($sql)){
+        if ($this->canUseReader($sql)) {
             return $this->readConnection->multiQuery($sql, $bind);
         }
         return parent::multiQuery($sql, $bind);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function query($sql, $bind = [])
     {
-        if($this->canUseReader($sql)){
+        if ($this->canUseReader($sql)) {
             return $this->readConnection->query($sql, $bind);
         }
         return parent::query($sql, $bind);
