@@ -10,6 +10,14 @@
         "OSL-3.0",
         "AFL-3.0"
     ],
+    "authors": [
+        {
+          "name": "Open Techiz",
+          "email": "support@opentechiz.com",
+          "homepage": "https://www.opentechiz.com",
+          "role": "Technical Support"
+        }
+    ],
     "minimum-stability": "dev",
     "keywords": [
       "magento 2",
