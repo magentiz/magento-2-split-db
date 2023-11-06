@@ -24,17 +24,6 @@ php bin/magento setup:di:compile
 php bin/magento setup:static-content:deploy
 ```
 
-## Support
-If you have any issues, please [contact us](mailto:support@opentechiz.com)
-
-## Need More Features?
-Please contact us to get a quote
-https://www.opentechiz.com/contact-us/
-
-## License
-The code is licensed under [Open Software License ("OSL") v. 3.0](http://opensource.org/licenses/osl-3.0.php).
-
-
 ## Setup Testing Environment Guidelines
 
 ### Step 1: Prepare Magento Project:
@@ -51,3 +40,14 @@ Refer to [Docker MariaDb Replication](https://github.com/vtearit/docker-mariadb-
   * After successfully switching the website to use MySQL Replication, run ```bin/magento setup:uninstall``` to uninstall magento then run ```bin/setup-install``` to reinstall. At this point, since you have set up MySQL Replication, the data will also be updated on the slave.
 
 ### Step 3: Install Magentiz_SplitDb extension using Composer or the zip file as mentioned above.
+
+
+## Support
+If you have any issues, please [contact us](mailto:support@opentechiz.com)
+
+## Need More Features?
+Please contact us to get a quote
+https://www.opentechiz.com/contact-us/
+
+## License
+The code is licensed under [Open Software License ("OSL") v. 3.0](http://opensource.org/licenses/osl-3.0.php).
