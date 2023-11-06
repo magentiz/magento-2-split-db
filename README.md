@@ -28,7 +28,7 @@ php bin/magento setup:static-content:deploy
 
 ### Step 1: Prepare Magento Project:
 
-First, you need to set up a Magento site running locally. Refer to this guide: https://github.com/markshust/docker-magento
+First, you need to set up a Magento site running locally. Refer to this guide: [Docker Magento](https://github.com/markshust/docker-magento)
 
 ### Step 2: Install MySQL Replication Master-Slave:
 
