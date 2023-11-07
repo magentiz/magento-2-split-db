@@ -19,6 +19,7 @@ Magentiz_SplitDb Extension, splitdb for magento 2
   * In command line, using "cd", navigate to your Magento 2 root directory
   * Run commands:
 ```
+php bin/magento module:enable Magentiz_SplitDb
 php bin/magento setup:upgrade
 php bin/magento setup:di:compile
 php bin/magento setup:static-content:deploy
