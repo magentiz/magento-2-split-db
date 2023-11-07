@@ -38,6 +38,7 @@ Refer to [Docker MariaDb Replication](https://github.com/vtearit/docker-mariadb-
   * Copy the services **```db```** and **```db_slave```** from the [docker-compose.yml](https://github.com/vtearit/docker-mariadb-replication/blob/master/docker-compose.yml) file to replace the **```db```** service in the compose.yaml file in the project's root directory. Also, add the **```dbslavedata```** volume to the list of volumes at the end of the compose.yaml file. The purpose of this is to create an additional Docker container for the MariaDB slave.
   * From root directory, Run ```bin/restart``` and follow the steps to switch to MySQL replication as described in [Docker MariaDb Replication](https://github.com/vtearit/docker-mariadb-replication): *access master-run query* and *access slave-run query*. After that, you can verify by adding a record to the database.
   * After successfully switching the website to use MySQL Replication, run ```bin/magento setup:uninstall``` to uninstall magento then run ```bin/setup-install``` to reinstall. At this point, since you have set up MySQL Replication, the data will also be updated on the slave.
+  * Update the **db** and **DB Mode** in the **app/etc/env.php** based on **env.php.example**.
 
 ### Step 3: Install Magentiz_SplitDb extension using Composer or the zip file as mentioned above.
 
