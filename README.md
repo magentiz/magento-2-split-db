@@ -25,6 +25,11 @@ php bin/magento setup:di:compile
 php bin/magento setup:static-content:deploy
 ```
 
+## User guide
+Run ```php bin/magento db:mode:set --mode db_mode``` to change db mode.
+db_mode can be **split** or **default**.
+
+
 ## Setup Testing Environment Guidelines
 
 ### Step 1: Prepare Magento Project:
