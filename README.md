@@ -13,7 +13,7 @@ Magentiz_SplitDb Extension, splitdb for magento 2
   * Run command: composer require magentiz/splitdb
 
 ## Installation Method 2 - Installing using archive
-  * Download [ZIP Archive](https://pm.opentechiz.com/vuong/magentiz-splitdb/-/archive/master/magentiz-splitdb-master.zip)
+  * Download [ZIP Archive](https://github.com/magentiz/magento-2-split-db/releases/)
   * Extract files
   * In your Magento 2 root directory create folder app/code/Magentiz/SplitDb
   * Copy files and folders from archive to that folder
