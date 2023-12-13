@@ -1,4 +1,4 @@
-# Magentiz SplitDb by Open Techiz
+# Magentiz SplitDb by Magentiz
 
 Magentiz_SplitDb Extension, splitdb for magento 2
 > This module was inspired by the functionality of [m2-ce-splitdb](https://github.com/rafaelstz/m2-ce-splitdb). We acknowledge and appreciate the contributions of the original author.
@@ -51,11 +51,11 @@ Refer to [Docker MariaDb Replication](https://github.com/vtearit/docker-mariadb-
 
 
 ## Support
-If you have any issues, please [contact us](mailto:support@opentechiz.com)
+If you have any issues, please [contact us](mailto:info@magentiz.com)
 
 ## Need More Features?
 Please contact us to get a quote
-https://www.opentechiz.com/contact-us/
+https://www.magentiz.com/
 
 ## License
 The code is licensed under [Open Software License ("OSL") v. 3.0](http://opensource.org/licenses/osl-3.0.php).

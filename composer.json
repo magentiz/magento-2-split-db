@@ -12,9 +12,9 @@
     ],
     "authors": [
         {
-          "name": "Open Techiz",
-          "email": "support@opentechiz.com",
-          "homepage": "https://www.opentechiz.com",
+          "name": "Magentiz",
+          "email": "info@magentiz.com",
+          "homepage": "https://www.magentiz.com",
           "role": "Technical Support"
         }
     ],
@@ -25,8 +25,7 @@
       "magento splitdb",
       "splitdb",
       "magentiz",
-      "magentiz_splitdb",
-      "opentechiz"
+      "magentiz_splitdb"
     ],
     "autoload": {
         "files": [ "registration.php" ],
