@@ -1,6 +1,7 @@
 # Magentiz SplitDb by Open Techiz
 
 Magentiz_SplitDb Extension, splitdb for magento 2
+> This module was inspired by the functionality of [m2-ce-splitdb](https://github.com/rafaelstz/m2-ce-splitdb). We acknowledge and appreciate the contributions of the original author.
 
 ## Requirements
   * Magento Community Edition 2.3.x-2.4.x or Magento Enterprise Edition 2.3.x-2.4.x
