@@ -1,5 +1,5 @@
 {
-    "name": "magentiz/splitdb",
+    "name": "magentiz/module-split-db",
     "description": "Magentiz_SplitDb Extension, splitdb for magento 2",
     "require": {
         "php": "~5.6.5 || >=7.0"
